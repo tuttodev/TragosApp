@@ -19,14 +19,14 @@ import com.example.Tragosapp.data.model.Drink
 import com.example.Tragosapp.domain.RepoImp
 import com.example.Tragosapp.ui.adapter.MainAdapter
 import com.example.Tragosapp.ui.viewmodel.MainViewModel
-import com.example.Tragosapp.ui.viewmodel.VMFactory
 import com.example.Tragosapp.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 
+@AndroidEntryPoint
 class MainFragment : Fragment(), MainAdapter.MainAdapterListener {
 
-    private val viewModel by activityViewModels<MainViewModel> { VMFactory(RepoImp(DataSourceImp(
-        AppDatabase.getDataBase(requireActivity().applicationContext)))) }
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,6 @@ class MainFragment : Fragment(), MainAdapter.MainAdapterListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 

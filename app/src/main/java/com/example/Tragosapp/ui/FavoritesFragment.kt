@@ -17,17 +17,15 @@ import com.example.Tragosapp.data.model.DrinkEntity
 import com.example.Tragosapp.domain.RepoImp
 import com.example.Tragosapp.ui.adapter.MainAdapter
 import com.example.Tragosapp.ui.viewmodel.MainViewModel
-import com.example.Tragosapp.ui.viewmodel.VMFactory
 import com.example.Tragosapp.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment(), MainAdapter.MainAdapterListener {
-    private val viewModel by activityViewModels<MainViewModel> { VMFactory(
-        RepoImp(
-            DataSourceImp(
-        AppDatabase.getDataBase(requireActivity().applicationContext))
-        )
-    ) }
+
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -15,13 +15,13 @@ import com.example.Tragosapp.data.model.Drink
 import com.example.Tragosapp.data.model.DrinkEntity
 import com.example.Tragosapp.domain.RepoImp
 import com.example.Tragosapp.ui.viewmodel.MainViewModel
-import com.example.Tragosapp.ui.viewmodel.VMFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_trago_detail.*
 
+@AndroidEntryPoint
 class TragoDetailFragment : Fragment() {
 
-    private val viewModel by activityViewModels<MainViewModel> { VMFactory(RepoImp(DataSourceImp(
-        AppDatabase.getDataBase(requireActivity().applicationContext)))) }
+    private val viewModel by activityViewModels<MainViewModel>()
     lateinit var drink: Drink
 
     override fun onCreate(savedInstanceState: Bundle?) {
